@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 /*--setup controllers--*/
-var controllers = require('controllers');
+var controllers = require('./controllers');
 app.use(controllers);
 /*--setup controllers--*/
 
