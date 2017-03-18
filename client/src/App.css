@@ -18,6 +18,21 @@
   font-size: large;
 }
 
+.completeItem{
+  width: 50%;
+  height: 30%;
+  border: solid;
+}
+
+.itemIcon{
+  float: left;
+  border: solid;
+}
+
+.itemDescription{
+  text-align: right;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
