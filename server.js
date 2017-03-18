@@ -15,6 +15,11 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
 
+/*--setup controllers--*/
+var controllers = require('controllers');
+app.use(controllers);
+/*--setup controllers--*/
+
 const COLUMNS = [
   'carbohydrate_g',
   'protein_g',
