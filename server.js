@@ -8,7 +8,7 @@ const db = new sqlite.Database('./Harambidtemps.db');
 
 const app = express();
 
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 3001));
 
 // Express only serves static assets in production
 if (process.env.NODE_ENV === 'production') {
