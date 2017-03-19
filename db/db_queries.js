@@ -36,7 +36,7 @@ function getAllItems(callback) {
 
 function setItemAvailibility(id, avail) {
 	var stmt = db.prepare("UPDATE item SET Availibility = (?) WHERE Id = (?)");
-	stmt.run(id, avail);
+	stmt.run(avail, id);
 	stmt.finalize();
 	db.close;
 }
@@ -49,9 +49,74 @@ function addNewUser(firstName, lastName, email, updatedAt, createdAt, profilePic
 	db.close();
 }
 
+function setUserUpdatedAt(id, updatedAt) {
+	var stmt = db.prepare("UPDATE user SET UpdatedAt = (?) WHERE Id = (?)");
+	stmt.run(updatedAt, id);
+	stmt.finalize();
+	db.close;
+}
+
+function getUserId(fb_Id, callback) {
+	var query = "SELECT Id FROM user WHERE FB_Id = " + fb_Id;
+	db.all(query, function (err, rows) {
+		if(err){
+				console.log(err);
+				db.close();
+		}else{
+				callback(rows);
+				db.close();
+		}
+	});
+}
+
+function getUserNumRatings(id, callback) {
+		var query = "SELECT Num_Ratings FROM user WHERE Id = " + id;
+		db.all(query, function (err, rows) {
+			if(err){
+					console.log(err);
+					db.close();
+			}else{
+					callback(rows);
+					db.close();
+			}
+		});
+}
+
+function setUserNumRatings(id, num_ratings) {
+	var stmt = db.prepare("UPDATE user SET Num_Ratings = (?) WHERE Id = (?)");
+	stmt.run(num_ratings, id);
+	stmt.finalize();
+	db.close;
+}
+
+function getUserAvgRating(id, callback) {
+		var query = "SELECT Rating_Avg FROM user WHERE Id = " + id;
+		db.all(query, function (err, rows) {
+			if(err){
+					console.log(err);
+					db.close();
+			}else{
+					callback(rows);
+					db.close();
+			}
+		});
+}
+
+function setUserAvgRating(id, rating_avg) {
+	var stmt = db.prepare("UPDATE user SET Rating_Avg = (?) WHERE Id = (?)");
+	stmt.run(rating_avg, id);
+	stmt.finalize();
+	db.close;
+}
+
 module.exports = {
 	addNewItem : addNewItem,
 	getItemsBasedOnCategory : getItemsBasedOnCategory,
 	setItemAvailibility : setItemAvailibility,
 	getAllItems : getAllItems,
-	addNewUser : addNewUser};
+	addNewUser : addNewUser,
+	getUserId : getUserId,
+	getUserNumRatings : getUserNumRatings,
+	setUserNumRatings : setUserNumRatings,
+	getUserAvgRating : getUserAvgRating,
+	setUserAvgRating : setUserAvgRating};
