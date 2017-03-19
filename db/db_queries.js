@@ -1,16 +1,52 @@
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('/Harambid.db');
+var db = new sqlite3.Database('./Harambid.db');
 
-function addNewItem(int memberId, string name, string pictureURL, date startTime, int duration, float minPrice, string desc, int avail, int numViews, string[] categories) {
-	var stmt = db.prepare("INSERT INTO item (MemberId, Name, Pictures, StartTime, Duration, StartPrice, MinPrice, Description, Categories, Availibility, Num_Views) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
-	stmt.run(memberId, name, pictureURL, startTime, duration, minPrice, desc, categories, avail, numViews);
+function addNewItem(memberId, name, pictureURL, startTime, duration, startPrice, minPrice, desc, avail, numViews, category, location) {
+	var stmt = db.prepare("INSERT INTO item (MemberId, Name, Pictures, StartTime, Duration, StartPrice, MinPrice, Description, Category, Availibility, Num_Views, Location) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+	stmt.run(memberId, name, pictureURL, startTime, duration, startPrice, minPrice, desc, category, avail, numViews, location);
+	stmt.finalize();
+	db.close;
 }
 
-function getItemsBasedOnCategory(string[] categories) {
+function getItemsBasedOnCategory(category, callback) {
+  var query = "SELECT * FROM item WHERE Category LIKE '%" + category + "%'";
+  db.all(query, function (err, rows) {
+    if(err){
+        console.log(err);
+				db.close();
+    }else{
+        callback(rows);
+				db.close();
+    }
+  });
+}
+
+function getAllItems(callback) {
+  var query = "SELECT * FROM item";
+  db.all(query, function (err, rows) {
+    if(err){
+        console.log(err);
+				db.close();
+    }else{
+        callback(rows);
+				db.close();
+    }
+  });
+}
+
+function setItemAvailibility(id, avail) {
+	var stmt = db.prepare("UPDATE item SET Availibility = (?) WHERE Id = (?)");
+	stmt.run(id, avail);
+	stmt.finalize();
+	db.close;
+}
+
+function addNewUser(firstName, lastName, email, updatedAt, createdAt, profilePic, fb_Id, num_ratings, rating_avg) {
 	//TODO
 }
 
-function setItemAvailibility(int id, int avail) {
-	var stmt = db.prepare("UPDATE item SET Availibility = (?) WHERE Id = (?)");
-	stmt.run(id, avail);
-}
+module.exports = {
+	addNewItem : addNewItem,
+	getItemsBasedOnCategory : getItemsBasedOnCategory,
+	setItemAvailibility : setItemAvailibility,
+	getAllItems : getAllItems};

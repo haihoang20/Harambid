@@ -47,9 +47,7 @@ class ItemView extends Component {
         </div>
 
         <div className = "Listings">
-            <Item/>
-            <Item/>
-            <Item/>
+            <Item waffles={123}/>
         </div>
       </div>
     );

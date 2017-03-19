@@ -1,10 +1,7 @@
 const express = require('express');
 const fs = require('fs');
-const sqlite = require('sql.js');
-
-const filebuffer = fs.readFileSync('db/usda-nnd.sqlite3');
-
-const db = new sqlite.Database(filebuffer);
+const sqlite = require('sqlite3');
+const db = new sqlite.Database('./Harambid.db');
 
 const app = express();
 
@@ -29,6 +26,7 @@ const COLUMNS = [
   'kcal',
   'description',
 ];
+
 app.get('/api/food', (req, res) => {
   const param = req.query.q;
 
@@ -69,6 +67,7 @@ app.get('/api/food', (req, res) => {
     res.json([]);
   }
 });
+
 
 app.listen(app.get('port'), () => {
   console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console

@@ -11,12 +11,16 @@ const customStyles = {
 
 class Item extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state={
-            visible: false
-        }
-    }
+
+
+  constructor(props) {
+    super(props);
+    console.log(this.props.waffles);
+    this.state={
+      visible: false,
+      waffles: this.props.waffles
+
+    }}
 
     setVisable(){
         if(this.state.visible == false)
@@ -127,7 +131,9 @@ Item.defaultProps = {
     categories: [],
     description: "Description Here of how Fiiiiiine the product is!",
     shippingCost: "FREE Standard Shipping",
-    isAuthenticated: false
+    isAuthenticated: false,
+    memberID: 666
+
 }
 
 export default Item;
