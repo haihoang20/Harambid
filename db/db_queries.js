@@ -10,6 +10,7 @@ function getItemsBasedOnCategory(string[] categories) {
 	//TODO
 }
 
-function setItemUnavailable() {
-	//TODO
+function setItemAvailibility(int id, int avail) {
+	var stmt = db.prepare("UPDATE item SET Availibility = (?) WHERE Id = (?)");
+	stmt.run(id, avail);
 }
