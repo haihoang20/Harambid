@@ -6,6 +6,8 @@ var db = new sqlite3.Database('Harambid.db');
 var sql = require("./db_queries.js");
 
 
+
+
 db.serialize(function() {
 	if (exists) {
 		console.log("Dropping tables...")
@@ -36,7 +38,7 @@ db.serialize(function() {
   stmt2.finalize();
 	stmt3.finalize();
 
-	sql.getItemsBasedOnCategory("a", console.log);
+	sql.getAllItems(console.log);
 
   /*
 	db.each("SELECT rowid AS id, Id FROM item", function(err, row) {
