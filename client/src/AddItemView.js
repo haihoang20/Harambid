@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactS3Uploader from 'react-s3-uploader';
 
 class AddItemView extends Component {
     constructor(props){
@@ -124,6 +125,17 @@ class AddItemView extends Component {
         });
     }
 
+    onUploadProgress(e) {
+
+    }
+
+    onUploadError(e) {
+      console.log(e);
+    }
+
+    onUploadFinish(e) {
+      console.log(e);
+    }
 
   render() {
     var name = '';
@@ -131,6 +143,14 @@ class AddItemView extends Component {
       <div className = "completeItem">
           <div className="Add your item">
           <form onSubmit={() => this.AddItem()}>
+          <ReactS3Uploader
+            signingUrl="/api/upload/s3/sign"
+            accept="image/*"
+            uploadRequestHeaders={{ 'x-amz-acl': 'public-read' }}
+            onProgress={this.onUploadProgress}
+            onError={this.onUploadError}
+            onFinish={this.onUploadFinish}
+          />
             <h2>
             Name:
             <input type="text" name="name" onChange={(e) => this.handleNameChange(e)} />
