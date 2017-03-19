@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
+import Item from './Item';
+import Dropdown from 'react-dropdown'
 
 class ItemView extends Component {
   render() {
-    
+    const Categories = [
+          'one', 'two', 'three'
+        ]
+
+    const Locations = ['First', 'Second', 'Third']
+
+    const defaultOption = Categories[0]
+
     let buyButton = null
     if(this.props.isAuthenticated == false)
         buyButton = <button> Please Login </button>
@@ -10,47 +19,41 @@ class ItemView extends Component {
         buyButton = <button> Buy Now </button>
 
     return (
-      <div className = "completeItem">
-        <div className="itemIcon">
-          <img src={this.props.imgSource} />
+
+      <div className="Combined">
+
+        <div className="Filter">
+          <Dropdown options={Categories} onChange={this._onSelect} value={"Select Category"} placeholder="Select an option" />
+          <label>
+            Price:
+            <hr/>
+          <input type="text" name="minPrice" value="minPrice"/>
+          <hr/>
+          <input type="text" name="maxPrice" />
+          </label>
+          <hr/>
+            Duration:
+            <hr/>
+          <input type="text" name="Duration"/>
+
+          <Dropdown options={Locations} onChange={this._onSelect} value={"Select Location"} placeholder="Select an option" />
+          Views:
+          <hr/>
+          <input type="text" name="minViews"/>
+          <hr/>
+          <input type="text" name="maxViews" />
+          <hr/>
+          <input type="submit" value="Submit" />
         </div>
-          <div className="itemDescription">
-            <h2>
-            {this.props.name}
-            </h2>
-            <h2>
-            {this.props.maxPrice}
-            </h2>
-            <h2>
-            {this.props.minPrice}
-            </h2>
-            <h2>
-            {this.props.maxPrice}
-            </h2>
-            <h2>
-            {this.props.duration}
-            </h2>
-            <h2>
-            {this.props.description}
-            </h2>
-            {this.props.shippingCost}
-          </div>
-          {buyButton}
+
+        <div className = "Listings">
+            <Item/>
+            <Item/>
+            <Item/>
+        </div>
       </div>
     );
   }
-}
-
-Item.defaultProps = {
-  imgSource: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRaRLHSecd1nSWMD_1uEj8ooMq2R1CzAYNg58yJrKD2wXQ3-tUsNOM4NU",
-  name: "null",
-  maxPrice: 9999,
-  minPrice: 99,
-  duration: 123,
-  categories: [],
-  description: "Description Here",
-  shippingCost: 123,
-  isAuthenticated: false
 }
 
 export default ItemView;
