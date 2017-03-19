@@ -31,6 +31,7 @@ const COLUMNS = [
 ];
 
 app.get('/api/food', (req, res) => {
+  console.log("====================HELLO WORLD====================");
   const param = req.query.q;
 
   if (!param) {

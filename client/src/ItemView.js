@@ -5,7 +5,7 @@ import Dropdown from 'react-dropdown'
 class ItemView extends Component {
   constructor(props){
     super(props);
-    console.log(props.state);
+    // console.log(props.state);
     this.state={
       authenticated:props.state.authenticated,
       name:props.state.name,
@@ -16,6 +16,10 @@ class ItemView extends Component {
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
   }
 
+  componentDidMount() {
+    this.getAllItems();
+  }
+
   componentWillReceiveProps(nextProps){
     this.setState({
       authenticated:nextProps.state.authenticated,
@@ -23,7 +27,15 @@ class ItemView extends Component {
       email:nextProps.state.email,
       id:nextProps.state.id
     });
-    console.log(this.state);
+    // console.log(this.state);
+  }
+
+  getAllItems() {
+    fetch('/api/item/allItems', {
+            accept: 'application/json',
+          }).then((data) => {
+            console.log(data);
+          });
   }
 
   render() {

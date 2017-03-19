@@ -18,9 +18,12 @@
 }
 
 .completeItem{
-
   height: 99%;
   border: solid;
+}
+
+.haiTest {
+  border: 10px solid red;
 }
 
 .itemIcon{
