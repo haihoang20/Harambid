@@ -20,10 +20,11 @@ class AddItemView extends Component {
     }
 
     AddItem = () => {
-        fetch(`api/food?q=hash+browns`, {
-   accept: 'application/json',
- })
         /*
+        fetch('/api/food?q=hash+browns', {
+                accept: 'application/json',
+ })
+ */
         if (this.state.name === '' ||
             this.state.maxPrice === '' ||
             this.state.minPrice === '' ||
@@ -46,24 +47,28 @@ class AddItemView extends Component {
             alert("Min price must be lower than max price");
         }
         else {
-            /*
-            alert("Name " + this.state.name
-                + "MaxPrice " + this.state.maxPrice
-                + "MinPrice " + this.state.minPrice
-                + "Duration " + this.state.duration
-                + "Categories " + this.state.categories
-                + "Description " + this.state.description
-                + "ShippingCost " + this.state.shippingCost
-                + "Location " + this.state.location);
+
+            // alert("Name " + this.state.name
+            //     + "MaxPrice " + this.state.maxPrice
+            //     + "MinPrice " + this.state.minPrice
+            //     + "Duration " + this.state.duration
+            //     + "Categories " + this.state.categories
+            //     + "Description " + this.state.description
+            //     + "ShippingCost " + this.state.shippingCost
+            //     + "Location " + this.state.location);
 
             this.state.isAuthenticated = true;
-            // TODO: get the member id
+            var stateData = this.state;
+            var data = new FormData();
             fetch('/api/item/addItem', {
-              method: "post",
-              body: this.state
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+              accept: 'application/json',
+              method: "POST",
+              body: JSON.stringify( this.state )
             });
         }
-                        */
     }
 
     handleNameChange(e){
@@ -120,7 +125,7 @@ class AddItemView extends Component {
     return (
       <div className = "completeItem">
           <div className="Add your item">
-          <form onSubmit={this.AddItem}>
+          <form onSubmit={() => this.AddItem()}>
             <h2>
             Name:
             <input type="text" name="name" onChange={(e) => this.handleNameChange(e)} />
