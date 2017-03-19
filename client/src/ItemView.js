@@ -20,7 +20,6 @@ class ItemView extends Component {
       email:nextProps.state.email,
       id:nextProps.state.id
     });
-    console.log(nextProps.state.id);
   }
 
   render() {

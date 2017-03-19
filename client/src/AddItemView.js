@@ -19,6 +19,10 @@ class AddItemView extends Component {
         }
     }
 
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps.state.id);
+    }
+
     AddItem = () => {
         /*
         fetch('/api/food?q=hash+browns', {
