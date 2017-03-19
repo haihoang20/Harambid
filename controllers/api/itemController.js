@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var sql = require("../../db/db_queries.js");
+var db = require("../../db/db_queries.js");
 
 var router = express();
 router.use(bodyParser.urlencoded({
@@ -16,19 +16,19 @@ router.get('/filterItem', function(req, res){
 
 router.post('/addItem', function(req, res) {
     console.log("HELLO");
-    //console.log(req);
     console.log(JSON.stringify(req.body, null, 4));
 
-    //String imgSource = req.imgSource;
-    //String name = req.name;
-    var maxPrice;
-    var minPrice;
-    var duration;
-    //var categories[];
-    var description;
-    var shippingCost;
-    var isAuthenticated;
-    //sql.addNewItem();
+    var memberId = req.body.memberId;
+    var imgSource = req.body.imgSource;
+    var name = req.body.name;
+    var maxPrice = req.body.maxPrice;
+    var minPrice = req.body.minPrice;;
+    var duration = req.body.duration;
+    var categories = req.body.categories;
+    var description = req.body.duration;;
+    var shippingCost = req.body.shippingCost;;
+    var isAuthenticated = req.body.isAuthenticated;;
+    //sql.addNewItems
     // add item to database
 });
 
