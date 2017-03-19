@@ -12,9 +12,9 @@ router.use(bodyParser.json());
 router.get('/filterItem', function(req, res){
     // get item from database
     var category = req.body.category;
-    db.getItemsBasedOnCategory(category, function(response)){
+    db.getItemsBasedOnCategory(category, function(response){
         res.json(response);
-    }
+    });
 });
 
 
