@@ -32,11 +32,14 @@ class App extends Component {
       picture: response.picture,
       id:response.id
     });
+    console.log("abfaugoaihgp");
 
-    addNewMember()
+    alert("adding new member");
+    this.addNewMember()
   }
 
-  addNewMember = (){
+  addNewMember = () => {
+    alert("adding new member");
     fetch('/api/member/addMember', {
       headers: {
           'Content-Type': 'application/json'
@@ -66,7 +69,7 @@ class App extends Component {
       <div className="Login">
         <FacebookLogin
         appId="244487019290556"
-        autoLoad={true}
+        autoLoad={false}
         fields="name,email,picture"
         callback={(e) => this.pushResults(e)} />
          <button onClick={() => this.addItem()}>Post Item</button>
