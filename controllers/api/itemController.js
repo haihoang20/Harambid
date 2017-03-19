@@ -29,11 +29,12 @@ router.post('/addItem', function(req, res) {
     var category = req.body.categories;
     var description = req.body.duration;
     var shippingCost = req.body.shippingCost;
+    var location = req.body.location;
     var isAuthenticated = req.body.isAuthenticated;
     var startTime;
     // add item to database
     db.addNewItem(memberId, name, imgUrl, 0, duration, maxPrice, minPrice,
-                    description, isAuthenticated, 0, category);
+                    description, isAuthenticated, 0, category, location);
 });
 
 router.get('/allItems', function(req, res) {
