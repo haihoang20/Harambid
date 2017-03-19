@@ -49,6 +49,13 @@ function addNewUser(firstName, lastName, email, updatedAt, createdAt, profilePic
 	db.close();
 }
 
+function setUserUpdatedAt(id, updatedAt) {
+	var stmt = db.prepare("UPDATE user SET UpdatedAt = (?) WHERE Id = (?)");
+	stmt.run(updatedAt, id);
+	stmt.finalize();
+	db.close;
+}
+
 function getUserId(fb_Id, callback) {
 	var query = "SELECT Id FROM user WHERE FB_Id = " + fb_Id;
 	db.all(query, function (err, rows) {
