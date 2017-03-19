@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import Item from './Item';
 
 class AddItemView extends Component {
     constructor(props){
         super(props);
+        // TODO: add member Id
         this.state={
+            memberID: 1,
             imgSource: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRaRLHSecd1nSWMD_1uEj8ooMq2R1CzAYNg58yJrKD2wXQ3-tUsNOM4NU",
             name: "",
             maxPrice:'',
@@ -19,6 +20,10 @@ class AddItemView extends Component {
     }
 
     AddItem = () => {
+        fetch(`api/food?q=hash+browns`, {
+   accept: 'application/json',
+ })
+        /*
         if (this.state.name === '' ||
             this.state.maxPrice === '' ||
             this.state.minPrice === '' ||
@@ -41,6 +46,7 @@ class AddItemView extends Component {
             alert("Min price must be lower than max price");
         }
         else {
+            /*
             alert("Name " + this.state.name
                 + "MaxPrice " + this.state.maxPrice
                 + "MinPrice " + this.state.minPrice
@@ -50,11 +56,14 @@ class AddItemView extends Component {
                 + "ShippingCost " + this.state.shippingCost
                 + "Location " + this.state.location);
 
-            fetch("/addItem", {
-              method: "POST",
+            this.state.isAuthenticated = true;
+            // TODO: get the member id
+            fetch('/api/item/addItem', {
+              method: "post",
               body: this.state
             });
         }
+                        */
     }
 
     handleNameChange(e){
