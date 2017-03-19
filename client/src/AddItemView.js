@@ -44,7 +44,7 @@ class AddItemView extends Component {
         }
 
         else if(this.state.minPrice >= this.state.maxPrice){
-            alert("Min price must be lower than max price");
+            alert("Min price" + this.state.minPrice + "must be lower than max price" + this.state.maxPrice);
         }
         else {
 
