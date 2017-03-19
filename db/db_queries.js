@@ -1,5 +1,5 @@
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('/db/Harambid.db');
+var db = new sqlite3.Database('./Harambid.db');
 
 function addNewItem(memberId, name, pictureURL, startTime, duration, minPrice, desc, avail, numViews, categories) {
 	var stmt = db.prepare("INSERT INTO item (MemberId, Name, Pictures, StartTime, Duration, StartPrice, MinPrice, Description, Categories, Availibility, Num_Views) VALUES (?,?,?,?,?,?,?,?,?,?,?)");

@@ -1,9 +1,6 @@
 const express = require('express');
 const fs = require('fs');
 const sqlite = require('sqlite3');
-
-//const filebuffer = fs.existsSync('Harambid.db');
-
 const db = new sqlite.Database('./Harambid.db');
 
 const app = express();
