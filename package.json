@@ -16,7 +16,7 @@
     "client": "babel-node start-client.js",
     "lint": "eslint .",
     "setup": "npm install && cd client && npm install && cd ..",
-		"rebuilddb": "node create_database.js"
+		"rebuilddb": "node ./db/create_database.js"
   },
   "devDependencies": {
     "concurrently": "^3.1.0",
