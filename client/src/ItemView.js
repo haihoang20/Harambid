@@ -11,7 +11,8 @@ class ItemView extends Component {
       name:props.state.name,
       email:props.state.email,
       id:props.state.id,
-      buttonMessage:"Please Login to Purchase"
+      buttonMessage:"Please Login to Purchase",
+      items: [1,2,3]
     }
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
   }
@@ -31,30 +32,34 @@ class ItemView extends Component {
   }
 
   getAllItems() {
-    fetch('/api/item/allItems', {
+    fetch('/api/item/allAvailableItems', {
             accept: 'application/json',
           }).then((data) => {
+            console.log("THIS IS ALL THE ITEMS YO");
             console.log(data);
           });
   }
 
+  renderItems(items) {
+    return items.map(() => {
+      return (
+        <Item state={this.state}/>
+      );
+    });
+  }
+
   render() {
-    const Categories = [
-          'one', 'two', 'three'
-        ]
+    const Categories = ['one', 'two', 'three'];
+    const Locations = ['First', 'Second', 'Third'];
+    const defaultOption = Categories[0];
 
-    const Locations = ['First', 'Second', 'Third']
-
-    const defaultOption = Categories[0]
-
-    let buyButton = null
+    let buyButton = null;
     if(this.state.isAuthenticated == false)
         buyButton = <button> Please Login </button>
     else
         buyButton = <button> Buy Now </button>
 
     return (
-
       <div className="Combined">
 
         <div className="Filter">
@@ -82,7 +87,7 @@ class ItemView extends Component {
         </div>
 
         <div className = "Listings">
-            <Item state={this.state}/>
+            {this.renderItems(this.state.items)}
         </div>
       </div>
     );

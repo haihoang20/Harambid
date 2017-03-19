@@ -38,7 +38,7 @@ router.post('/addItem', function(req, res) {
 
 router.get('/allItems', function(req, res) {
   db.getAllItems(function(response){
-      console.log(response);
+      // console.log(response);
       res.json(response);
   });
 });
