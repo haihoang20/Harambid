@@ -43,7 +43,7 @@ db.serialize(function() {
   stmt2.finalize();
 	stmt3.finalize();
 
-	sql.addNewUser("facebitch", "e@a.com", "213", "123", "aaa", "bbb", "23", "12");
+	//sql.addNewUser("facebitch", "e@a.com", "213", "123", "aaa", "bbb", "23", "12");
 
   /*
 	db.each("SELECT rowid AS id, Id FROM item", function(err, row) {
