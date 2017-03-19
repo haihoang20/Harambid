@@ -15,10 +15,6 @@ router.get('/filterItem', function(req, res){
 */
 
 router.post('/addItem', function(req, res) {
-    /*
-    console.log("HELLO");
-    console.log(JSON.stringify(req.body, null, 4));
-    */
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
