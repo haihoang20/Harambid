@@ -42,10 +42,10 @@ class App extends Component {
       id:response.id
     });
 
-    addNewMember()
+    this.addNewMember();
   }
 
-  addNewMember = (){
+  addNewMember = () =>{
     fetch('/api/member/addMember', {
       headers: {
           'Content-Type': 'application/json'
