@@ -8,11 +8,15 @@ router.use(bodyParser.urlencoded({
 }));
 
 router.use(bodyParser.json());
-/*
+
 router.get('/filterItem', function(req, res){
     // get item from database
+    var category = req.body.category;
+    db.getItemsBasedOnCategory(category, function(response)){
+        res.json(response);
+    }
 });
-*/
+
 
 router.post('/addItem', function(req, res) {
     var today = new Date();
@@ -38,14 +42,12 @@ router.post('/addItem', function(req, res) {
 
 router.get('/allItems', function(req, res) {
   db.getAllItems(function(response){
-      // console.log(response);
       res.json(response);
   });
 });
 
 router.get('/allAvailableItems', function(req, res) {
     db.getAllAvailableItems(function(response){
-        //console.log(response);
         res.json(response);
     });
 });
