@@ -19,8 +19,6 @@ function createTables() {
 	db.run("CREATE TABLE IF NOT EXISTS item (Id INTEGER PRIMARY KEY AUTOINCREMENT, MemberId INT, Name TEXT, Pictures TEXT, StartTime DATETIME, Duration INT, StartPrice FLOAT, MinPrice FLOAT, Description TEXT, Category TEXT, Availibility INT,	Num_Views INT, Location TEXT)");
 }
 
-db.serialize(dropTablesIfExists());
-
 db.serialize(function() {
 
 	if (!exists) {

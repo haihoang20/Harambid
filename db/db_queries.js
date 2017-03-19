@@ -55,7 +55,7 @@ function setItemAvailibility(id, avail) {
 	db.close;
 }
 
-function addNewUser(name, email, updatedAt, createdAt, profilePic, fb_Id, num_ratings, rating_avg) {
+function addNewUser(name, email, createdAt, profilePic, fb_Id, num_ratings, rating_avg) {
 	var stmt = db.prepare("INSERT INTO user (Name, Email, CreatedAt, ProfilePic, FB_Id, Num_Ratings, Rating_Avg) VALUES (?, ?, ?, ?, ?, ?, ?)");
 	stmt.run(name, email, createdAt, profilePic, fb_Id, num_ratings, rating_avg);
 	stmt.finalize();
