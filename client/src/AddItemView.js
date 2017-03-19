@@ -144,7 +144,16 @@ class AddItemView extends Component {
             </h2>
             <h2>
             Categories:
-                <input type="text" name="categories" onChange={(e) => this.handleCategoriesChange(e)} />
+                <select onChange={(e) => this.handleCategoriesChange(e)}>
+                <option value="-"> - </option>
+                <option value="cars and motors">Card and Motors</option>
+                <option value="sports, leisure and games">Sports, Leisure and Games</option>
+                <option value="home and garden">Home and Garden</option>
+                <option value="fashion and accessories">Fashion and Accessories</option>
+                <option value="baby and child">Baby and Child</option>
+                <option value="movie, books and music">Movie, Books and Music</option>
+                <option value="other">Other</option>
+                </select>
             </h2>
             <h2>
             Description:

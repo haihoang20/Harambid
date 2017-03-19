@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-//var sql = require("../../db/db_queries.js");
+var sql = require("../../db/db_queries.js");
 
 var router = express();
 router.use(bodyParser.urlencoded({
