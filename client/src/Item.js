@@ -1,21 +1,66 @@
 import React, { Component } from 'react';
 import Grid from 'react-infinite-grid';
+import Modal from 'react-modal';
 
 class Item extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state={
+      visible: false
+    }
+  }
+
+  setVisable(){
+    if(this.state.visible == false)
+      this.setState({visible: true});
+    else
+      this.setState({visible: false});
+  }
+
   render() {
-    
     let buyButton = null
+
     if(this.props.isAuthenticated == false)
         buyButton = <button> Please Login </button>
     else
         buyButton = <button> Buy Now </button>
 
     return (
-      <div className = "completeItem">
+      <div>
+
+      <div className="miniItemBox" onClick={() => this.setVisable()}>
+      
+      <div className="miniImage">
+        <img src={this.props.imgSource} />
+      </div>
+            <h2>
+            {this.props.name}
+            </h2>
+
+            <h2>
+            {this.props.maxPrice}
+            </h2>
+
+            <h2>
+            {this.props.duration}
+            </h2>
+      </div>
+
+
+      <Modal isOpen = {this.state.visible} contentLabel="Modal">
+
+      <div className="completeItem">
+
         <div className="itemIcon">
           <img src={this.props.imgSource} />
         </div>
           <div className="itemDescription">
+
+            <div className="closeText" onClick={() => this.setVisable()}>
+              Close
+            </div>
+
             <h2>
             {this.props.name}
             </h2>
@@ -36,7 +81,11 @@ class Item extends Component {
             </h2>
             {this.props.shippingCost}
           </div>
+
           {buyButton}
+
+      </div>
+      </Modal>
       </div>
     );
   }
