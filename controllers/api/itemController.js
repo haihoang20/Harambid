@@ -32,6 +32,13 @@ router.post('/addItem', function(req, res) {
     // add item to database
 });
 
-
+router.get('/allItems', function(req, res) {
+  console.log("IMMA BOUT TO GET ALL DA ITEMS");
+  console.log(req);
+  // db.getAllItems()
+  //   .then((data) => {
+  //     res.json(data);
+  //   })
+});
 
 module.exports = router;
