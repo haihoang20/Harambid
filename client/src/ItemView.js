@@ -32,12 +32,14 @@ class ItemView extends Component {
   }
 
   getAllItems() {
-    fetch('/api/item/allAvailableItems', {
+      fetch('/api/item/allAvailableItems', {
             accept: 'application/json',
-          }).then((data) => {
-            console.log("THIS IS ALL THE ITEMS YO");
-            console.log(data);
-          });
+        }).then((response) => {
+                response.json().then(function(data) {
+                    //console.log(data);
+                    //alert(JSON.stringify(data));
+            });
+    });
   }
 
   renderItems(items) {

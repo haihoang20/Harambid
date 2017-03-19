@@ -45,7 +45,7 @@ router.get('/allItems', function(req, res) {
 
 router.get('/allAvailableItems', function(req, res) {
     db.getAllAvailableItems(function(response){
-        console.log(response);
+        //console.log(response);
         res.json(response);
     });
 });
