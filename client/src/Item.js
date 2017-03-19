@@ -6,12 +6,15 @@ class Item extends Component {
 
   constructor(props) {
     super(props);
+    console.log(this.props.waffles);
     this.state={
-      visible: false
+      visible: false,
+      waffles: this.props.waffles
     }
   }
 
   setVisable(){
+    console.log(this.state.waffles);
     if(this.state.visible == false)
       this.setState({visible: true});
     else
@@ -101,7 +104,8 @@ Item.defaultProps = {
   categories: [],
   description: "Description Here",
   shippingCost: 123,
-  isAuthenticated: false
+  isAuthenticated: false,
+  memberID: 666
 }
 
 export default Item;
