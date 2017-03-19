@@ -13,8 +13,10 @@ function getItemsBasedOnCategory(categories, callback) {
   db.all(query, function (err, rows) {
     if(err){
         console.log(err);
+				db.close();
     }else{
         callback(rows);
+				db.close();
     }
   });
 }

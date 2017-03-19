@@ -3,7 +3,7 @@ var file = "Harambid.db";
 var exists = fs.existsSync(file);
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('Harambid.db');
-var sql = require("db_queries.js");
+var sql = require("./db_queries.js");
 
 
 db.serialize(function() {
@@ -32,7 +32,7 @@ db.serialize(function() {
 	var stmt3 = db.prepare("UPDATE item SET Availibility = (?) WHERE Id =  (? )" );
 	stmt3.run(0, 1);
 
-	sql.getItemsBasedOnCategoryTest("a", console.log);
+	sql.getItemsBasedOnCategory("a", console.log);
 
 	stmt.finalize();
   stmt2.finalize();
