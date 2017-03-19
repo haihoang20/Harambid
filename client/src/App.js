@@ -16,7 +16,7 @@ class App extends Component {
       <div className="App">
       <div className="Login">
         <FacebookLogin
-        appId="1088597931155576"
+        appId="244487019290556"
         autoLoad={true}
         fields="name,email,picture"
         callback={responseFacebook} />
