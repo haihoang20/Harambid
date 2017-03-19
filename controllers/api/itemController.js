@@ -37,11 +37,16 @@ router.post('/addItem', function(req, res) {
 });
 
 router.get('/allItems', function(req, res) {
-  console.log("IMMA BOUT TO GET ALL DA ITEMS");
   db.getAllItems(function(response){
       console.log(response);
       res.json(response);
   });
 });
 
+router.get('/allAvailableItems', function(req, res) {
+    db.getAllAvailableItems(function(response){
+        console.log(response);
+        res.json(response);
+    });
+});
 module.exports = router;

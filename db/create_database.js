@@ -40,7 +40,7 @@ db.serialize(function() {
 	stmt3.run(0, 1);
 
 	stmt.finalize();
-  stmt2.finalize();
+  	stmt2.finalize();
 	stmt3.finalize();
 
 	//sql.addNewUser("facebitch", "e@a.com", "213", "123", "aaa", "bbb", "23", "12");

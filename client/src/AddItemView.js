@@ -15,7 +15,7 @@ class AddItemView extends Component {
             description:"",
             shippingCost:'',
             location:"",
-            isAuthenticated:"",
+            isAuthenticated:0,
         }
     }
 
@@ -63,7 +63,7 @@ class AddItemView extends Component {
             //     + "ShippingCost " + this.state.shippingCost
             //     + "Location " + this.state.location);
 
-            this.state.isAuthenticated = true;
+            this.state.isAuthenticated = 1;
             var stateData = this.state;
             var data = new FormData();
             fetch('/api/item/addItem', {
