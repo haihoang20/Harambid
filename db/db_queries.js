@@ -107,4 +107,9 @@ module.exports = {
 	getItemsBasedOnCategory : getItemsBasedOnCategory,
 	setItemAvailibility : setItemAvailibility,
 	getAllItems : getAllItems,
-	addNewUser : addNewUser};
+	addNewUser : addNewUser,
+	getUserId : getUserId,
+	getUserNumRatings : getUserNumRatings,
+	setUserNumRatings : setUserNumRatings,
+	getUserAvgRating : getUserAvgRating,
+	setUserAvgRating : setUserAvgRating};
