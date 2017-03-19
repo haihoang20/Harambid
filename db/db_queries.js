@@ -1,9 +1,9 @@
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('./Harambid.db');
 
-function addNewItem(memberId, name, pictureURL, startTime, duration, startPrice, minPrice, desc, avail, numViews, category) {
-	var stmt = db.prepare("INSERT INTO item (MemberId, Name, Pictures, StartTime, Duration, StartPrice, MinPrice, Description, Category, Availibility, Num_Views) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-	stmt.run(memberId, name, pictureURL, startTime, duration, startPrice, minPrice, desc, category, avail, numViews);
+function addNewItem(memberId, name, pictureURL, startTime, duration, startPrice, minPrice, desc, avail, numViews, category, location) {
+	var stmt = db.prepare("INSERT INTO item (MemberId, Name, Pictures, StartTime, Duration, StartPrice, MinPrice, Description, Category, Availibility, Num_Views, Location) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+	stmt.run(memberId, name, pictureURL, startTime, duration, startPrice, minPrice, desc, category, avail, numViews, location);
 	stmt.finalize();
 	db.close;
 }

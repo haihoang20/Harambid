@@ -17,7 +17,7 @@ db.serialize(function() {
 
 	console.log("Creating tables...")
 	db.run("CREATE TABLE if not exists user (Id INTEGER PRIMARY KEY AUTOINCREMENT, FirstName TEXT, LastName TEXT, Email TEXT, UpdatedAt DATETIME, CreatedAt DATETIME, ProfilePic TEXT, FB_Id TEXT, Num_Ratings INT, Rating_Avg FLOAT)");
-	db.run("CREATE TABLE IF NOT EXISTS item (Id INTEGER PRIMARY KEY AUTOINCREMENT, MemberId INT, Name TEXT, Pictures TEXT, StartTime DATETIME, Duration INT, StartPrice FLOAT, MinPrice FLOAT, Description TEXT, Category TEXT, Availibility INT,	Num_Views INT)");
+	db.run("CREATE TABLE IF NOT EXISTS item (Id INTEGER PRIMARY KEY AUTOINCREMENT, MemberId INT, Name TEXT, Pictures TEXT, StartTime DATETIME, Duration INT, StartPrice FLOAT, MinPrice FLOAT, Description TEXT, Category TEXT, Availibility INT,	Num_Views INT, Location TEXT)");
 
 
 	var stmt = db.prepare("INSERT INTO user (FirstName) VALUES (?)");
@@ -26,9 +26,9 @@ db.serialize(function() {
 			console.log("Creating User " + i);
   }
 
-	var stmt2 = db.prepare("INSERT INTO item (MemberId, Name, Pictures, StartTime, Duration, StartPrice, MinPrice, Description, Category, Availibility, Num_Views) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+	var stmt2 = db.prepare("INSERT INTO item (MemberId, Name, Pictures, StartTime, Duration, StartPrice, MinPrice, Description, Category, Availibility, Num_Views, Location) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 	for (var i = 1; i < 11; i++) {
-		stmt2.run(i, "FAKEITEM", "pictureURL", 1, 23, 12.5, 2.3,"desc", "a", 1, 3);
+		stmt2.run(i, "FAKEITEM", "pictureURL", 1, 23, 12.5, 2.3,"desc", "a", 1, 3, "Canada");
 		console.log("Creating item" + i);
 	}
 	var stmt3 = db.prepare("UPDATE item SET Availibility = (?) WHERE Id =  (? )" );
