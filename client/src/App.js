@@ -8,10 +8,27 @@ import Login from './Login';
 import FacebookLogin from 'react-facebook-login';
 
 class App extends Component {
-  render() {
-    const responseFacebook = (response) => {
-    console.log(response);
+
+  constructor(props){
+    super(props);
+    this.state={
+      authenticated:false,
+      name:"null",
+      email:"null",
+      id:0
+    }
   }
+
+  pushResults(response){
+    this.setState({
+      authenticated:true,
+      name:response.name,
+      email:response.email,
+      id:response.id
+    });
+  }
+
+  render() {
     return (
       <div className="App">
       <div className="Login">
@@ -19,9 +36,9 @@ class App extends Component {
         appId="244487019290556"
         autoLoad={true}
         fields="name,email,picture"
-        callback={responseFacebook} />
+        callback={(e) => this.pushResults(e)} />
       </div>
-      <ItemView/>
+      <ItemView state={this.state}/>
       </div>
     );
   }

@@ -6,6 +6,10 @@ import FacebookLogin from 'react-facebook-login';
 
 class Login extends Component {
 
+  test(response){
+    console.log(response);
+  }
+
   render() {
   	const responseFacebook = (response) => {
 	  console.log(response);
@@ -13,10 +17,10 @@ class Login extends Component {
     return (
       <div className="Login">
         <FacebookLogin
-		    appId="1088597931155576"
-		    autoLoad={true}
-		    fields="name,email,picture"
-		    callback={responseFacebook} />
+        appId="244487019290556"
+        autoLoad={true}
+        fields="name,email,picture"
+        callback={this.test} />
       </div>
     );
   }
