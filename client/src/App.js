@@ -24,6 +24,15 @@ class App extends Component {
     this.pushResults = this.pushResults.bind(this);
   }
 
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      authenticated:nextProps.state.authenticated,
+      name:nextProps.state.name,
+      email:nextProps.state.email,
+      id:nextProps.state.id
+    });
+  }
+
   pushResults(response){
     this.setState({
       authenticated:true,
@@ -33,13 +42,10 @@ class App extends Component {
       id:response.id
     });
     console.log("abfaugoaihgp");
-
-    alert("adding new member");
     this.addNewMember()
   }
 
-  addNewMember = () => {
-    alert("adding new member");
+  addNewMember = () =>{
     fetch('/api/member/addMember', {
       headers: {
           'Content-Type': 'application/json'
@@ -80,7 +86,7 @@ class App extends Component {
             </div>
           </Modal>
       </div>
-      <ItemView/>
+      <ItemView state={this.state}/>
       </div>
     );
   }

@@ -5,12 +5,15 @@ import Dropdown from 'react-dropdown'
 class ItemView extends Component {
   constructor(props){
     super(props);
+    console.log(props.state);
     this.state={
-      authenticated:false,
-      name:"null",
-      email:"null",
-      id:0
+      authenticated:props.state.authenticated,
+      name:props.state.name,
+      email:props.state.email,
+      id:props.state.id,
+      buttonMessage:"Please Login to Purchase"
     }
+    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
   }
 
   componentWillReceiveProps(nextProps){
@@ -20,6 +23,7 @@ class ItemView extends Component {
       email:nextProps.state.email,
       id:nextProps.state.id
     });
+    console.log(this.state);
   }
 
   render() {
@@ -32,7 +36,7 @@ class ItemView extends Component {
     const defaultOption = Categories[0]
 
     let buyButton = null
-    if(this.props.isAuthenticated == false)
+    if(this.state.isAuthenticated == false)
         buyButton = <button> Please Login </button>
     else
         buyButton = <button> Buy Now </button>
@@ -66,7 +70,7 @@ class ItemView extends Component {
         </div>
 
         <div className = "Listings">
-            <Item waffles={123}/>
+            <Item state={this.state}/>
         </div>
       </div>
     );
