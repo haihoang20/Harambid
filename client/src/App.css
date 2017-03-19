@@ -18,8 +18,8 @@
 }
 
 .completeItem{
-  width: 50%;
-  height: 90%;
+
+  height: 99%;
   border: solid;
 }
 
@@ -41,7 +41,7 @@
   float:left;
 }
 
-<<<<<<< HEAD
+
 .Filter{
   width: 20%;
   float: left;
@@ -169,6 +169,26 @@
 
 .ratings{
   width:100%;
+}
+
+.itemDescFont{
+  padding-top: 50px;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.maxPriceItem{
+  color: red;
+}
+
+.close{
+  color: white;
+  background-color: darkred;
+
+}
+.eyeImage{
+float: left;
+font-size: small;
 }
 
 @keyframes App-logo-spin {
