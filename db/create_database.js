@@ -32,11 +32,12 @@ db.serialize(function() {
 	var stmt3 = db.prepare("UPDATE item SET Availibility = (?) WHERE Id =  (? )" );
 	stmt3.run(0, 1);
 
-	sql.getItemsBasedOnCategory("a", console.log);
-
 	stmt.finalize();
   stmt2.finalize();
 	stmt3.finalize();
+
+	sql.getItemsBasedOnCategory("a", console.log);
+
   /*
 	db.each("SELECT rowid AS id, Id FROM item", function(err, row) {
       console.log(row.id + ": " + row.Id);
