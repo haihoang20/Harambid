@@ -1,6 +1,7 @@
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('./Harambid.db');
 
+
 function addNewItem(memberId, name, pictureURL, startTime, duration, minPrice, desc, avail, numViews, categories) {
 	var stmt = db.prepare("INSERT INTO item (MemberId, Name, Pictures, StartTime, Duration, StartPrice, MinPrice, Description, Categories, Availibility, Num_Views) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 	stmt.run(memberId, name, pictureURL, startTime, duration, minPrice, desc, categories, avail, numViews);
@@ -9,12 +10,14 @@ function addNewItem(memberId, name, pictureURL, startTime, duration, minPrice, d
 }
 
 function getItemsBasedOnCategory(categories, callback) {
-  var query = "SELECT * FROM table WHERE Categories LIKE %" + categories + "%";
+  var query = "SELECT * FROM item WHERE Categories LIKE '%" + categories + "%'";
   db.all(query, function (err, rows) {
     if(err){
         console.log(err);
+				db.close();
     }else{
         callback(rows);
+				db.close();
     }
   });
 }
@@ -25,3 +28,5 @@ function setItemAvailibility(id, avail) {
 	stmt.finalize();
 	db.close;
 }
+
+module.exports = {addNewItem : addNewItem, getItemsBasedOnCategory : getItemsBasedOnCategory, setItemAvailibility : setItemAvailibility};
