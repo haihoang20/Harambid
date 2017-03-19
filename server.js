@@ -1,14 +1,14 @@
 const express = require('express');
 const fs = require('fs');
-const sqlite = require('sql.js');
+const sqlite = require('sqlite3');
 
-const filebuffer = fs.readFileSync('db/usda-nnd.sqlite3');
+//const filebuffer = fs.existsSync('Harambid.db');
 
-const db = new sqlite.Database(filebuffer);
+const db = new sqlite.Database('./Harambidtemps.db');
 
 const app = express();
 
-app.set('port', (process.env.PORT || 3001));
+app.set('port', (process.env.PORT || 3000));
 
 // Express only serves static assets in production
 if (process.env.NODE_ENV === 'production') {
@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
 var controllers = require('./controllers');
 app.use(controllers);
 /*--setup controllers--*/
-
+/*
 const COLUMNS = [
   'carbohydrate_g',
   'protein_g',
@@ -29,6 +29,7 @@ const COLUMNS = [
   'kcal',
   'description',
 ];
+
 app.get('/api/food', (req, res) => {
   const param = req.query.q;
 
@@ -69,6 +70,7 @@ app.get('/api/food', (req, res) => {
     res.json([]);
   }
 });
+*/
 
 app.listen(app.get('port'), () => {
   console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console

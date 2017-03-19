@@ -1,5 +1,5 @@
 var express = require('express');
-//var sql = require("../../db/db_queries.js");
+var sql = require("../../db/db_queries.js");
 
 var router = express.Router();
 
