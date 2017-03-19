@@ -17,8 +17,8 @@ var controllers = require('./controllers');
 app.use(controllers);
 /*--setup controllers--*/
 
-process.env.AWS_ACCESS_KEY_ID = null;
-process.env.AWS_SECRET_ACCESS_KEY = null;
+process.env.AWS_ACCESS_KEY_ID = "AKIAJWRKQD4U5F4YEGZA";
+process.env.AWS_SECRET_ACCESS_KEY = "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";
 /*
 app.use('/s3', require('react-s3-uploader/s3router')({
 	bucket: 'harambid',
@@ -36,7 +36,6 @@ const COLUMNS = [
 ];
 
 app.get('/api/food', (req, res) => {
-  console.log("====================HELLO WORLD====================");
   const param = req.query.q;
 
   if (!param) {

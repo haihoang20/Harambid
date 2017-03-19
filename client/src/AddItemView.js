@@ -133,23 +133,28 @@ class AddItemView extends Component {
       console.log(e);
     }
 
-    onUploadFinish(e) {
-      console.log(e);
-    }
+		onUploadFinish(upload) {
+			console.log("JT IS THE BEST");
+			console.log(upload);
+    	this.setState({
+      	imageSrc: upload.filename
+    	});
+  	}
 
-  render() {
+  render	() {
     var name = '';
     return (
       <div className = "completeItem">
           <div className="Add your item">
           <form onSubmit={() => this.AddItem()}>
+					<img className="uploaded-image" src={"https://s3-us-west-2.amazonaws.com/harambid/" + this.state.imageSrc}/>
           <ReactS3Uploader
             signingUrl="api/upload/s3/sign"
             accept="image/*"
             uploadRequestHeaders={{ 'x-amz-acl': 'public-read' }}
             onProgress={this.onUploadProgress}
             onError={this.onUploadError}
-            onFinish={this.onUploadFinish}
+            onFinish={(e) => this.onUploadFinish(e)}
           />
             <h2>
             Name:
