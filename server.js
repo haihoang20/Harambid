@@ -17,6 +17,9 @@ var controllers = require('./controllers');
 app.use(controllers);
 /*--setup controllers--*/
 
+process.env.AWS_ACCESS_KEY_ID = null;
+process.env.AWS_SECRET_ACCESS_KEY = null;
+
 const COLUMNS = [
   'carbohydrate_g',
   'protein_g',
