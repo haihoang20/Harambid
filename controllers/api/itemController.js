@@ -15,10 +15,6 @@ router.get('/filterItem', function(req, res){
 */
 
 router.post('/addItem', function(req, res) {
-    /*
-    console.log("HELLO");
-    console.log(JSON.stringify(req.body, null, 4));
-    */
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -41,12 +37,16 @@ router.post('/addItem', function(req, res) {
 });
 
 router.get('/allItems', function(req, res) {
-  console.log("IMMA BOUT TO GET ALL DA ITEMS");
-  console.log(req);
-  // db.getAllItems()
-  //   .then((data) => {
-  //     res.json(data);
-  //   })
+  db.getAllItems(function(response){
+      // console.log(response);
+      res.json(response);
+  });
 });
 
+router.get('/allAvailableItems', function(req, res) {
+    db.getAllAvailableItems(function(response){
+        console.log(response);
+        res.json(response);
+    });
+});
 module.exports = router;

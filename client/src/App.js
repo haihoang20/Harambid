@@ -41,7 +41,7 @@ class App extends Component {
       picture: response.picture,
       id:response.id
     });
-    console.log("abfaugoaihgp");
+    // console.log("abfaugoaihgp");
     this.addNewMember()
   }
 

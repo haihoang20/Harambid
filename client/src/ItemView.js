@@ -5,15 +5,20 @@ import Dropdown from 'react-dropdown'
 class ItemView extends Component {
   constructor(props){
     super(props);
-    console.log(props.state);
+    // console.log(props.state);
     this.state={
       authenticated:props.state.authenticated,
       name:props.state.name,
       email:props.state.email,
       id:props.state.id,
-      buttonMessage:"Please Login to Purchase"
+      buttonMessage:"Please Login to Purchase",
+      items: [1,2,3]
     }
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
+  }
+
+  componentDidMount() {
+    this.getAllItems();
   }
 
   componentWillReceiveProps(nextProps){
@@ -23,26 +28,38 @@ class ItemView extends Component {
       email:nextProps.state.email,
       id:nextProps.state.id
     });
-    console.log(this.state);
+    // console.log(this.state);
+  }
+
+  getAllItems() {
+    fetch('/api/item/allAvailableItems', {
+            accept: 'application/json',
+          }).then((data) => {
+            console.log("THIS IS ALL THE ITEMS YO");
+            console.log(data);
+          });
+  }
+
+  renderItems(items) {
+    return items.map(() => {
+      return (
+        <Item state={this.state}/>
+      );
+    });
   }
 
   render() {
-    const Categories = [
-          'one', 'two', 'three'
-        ]
+    const Categories = ['one', 'two', 'three'];
+    const Locations = ['First', 'Second', 'Third'];
+    const defaultOption = Categories[0];
 
-    const Locations = ['First', 'Second', 'Third']
-
-    const defaultOption = Categories[0]
-
-    let buyButton = null
+    let buyButton = null;
     if(this.state.isAuthenticated == false)
         buyButton = <button> Please Login </button>
     else
         buyButton = <button> Buy Now </button>
 
     return (
-
       <div className="Combined">
 
         <div className="Filter">
@@ -70,7 +87,7 @@ class ItemView extends Component {
         </div>
 
         <div className = "Listings">
-            <Item state={this.state}/>
+            {this.renderItems(this.state.items)}
         </div>
       </div>
     );

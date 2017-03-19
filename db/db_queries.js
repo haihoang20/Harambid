@@ -28,8 +28,21 @@ function getAllItems(callback) {
         console.log(err);
 				db.close();
     }else{
-        callback(rows);
+		return callback(rows);
+		db.close();
+    }
+  });
+}
+
+function getAllAvailableItems(callback) {
+  var query = "SELECT * FROM item WHERE Availibility = 1";
+  db.all(query, function (err, rows) {
+    if(err){
+        console.log(err);
 				db.close();
+    }else{
+		return callback(rows);
+		db.close();
     }
   });
 }
@@ -121,6 +134,7 @@ module.exports = {
 	getItemsBasedOnCategory : getItemsBasedOnCategory,
 	setItemAvailibility : setItemAvailibility,
 	getAllItems : getAllItems,
+	getAllAvailableItems : getAllAvailableItems,
 	addNewUser : addNewUser,
 	getUserId : getUserId,
 	getUserNumRatings : getUserNumRatings,

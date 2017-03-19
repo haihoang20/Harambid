@@ -7,12 +7,12 @@ import FacebookLogin from 'react-facebook-login';
 class Login extends Component {
 
   test(response){
-    console.log(response);
+    // console.log(response);
   }
 
   render() {
   	const responseFacebook = (response) => {
-	  console.log(response);
+	  // console.log(response);
 	}
     return (
       <div className="Login">
