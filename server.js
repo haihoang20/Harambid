@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
 var controllers = require('./controllers');
 app.use(controllers);
 /*--setup controllers--*/
-/*
+
 const COLUMNS = [
   'carbohydrate_g',
   'protein_g',
@@ -70,7 +70,7 @@ app.get('/api/food', (req, res) => {
     res.json([]);
   }
 });
-*/
+
 
 app.listen(app.get('port'), () => {
   console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
