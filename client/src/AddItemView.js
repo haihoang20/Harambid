@@ -2,14 +2,36 @@ import React, { Component } from 'react';
 import Item from './Item';
 
 class AddItemView extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            name: "",
+            maxPrice:"",
+            minPrice:""
+
+        }
+    }
+
+    AddItem = () => {
+        alert(this.state.name);
+    }
+
+    handleNameChange(e){
+        this.setState({
+            name: e.target.value
+        });
+    }
+
+
   render() {
-    let addButton = <button> Add Item </button>
+    var name = '';
     return (
       <div className = "completeItem">
           <div className="Add your item">
+          <form onSubmit={this.AddItem}>
             <h2>
             Name:
-                <input type="text" name="name" />
+            <input type="text" name="name" onChange={(e) => this.handleNameChange(e)} />
             </h2>
             <h2>
             Max price:
@@ -43,25 +65,14 @@ class AddItemView extends Component {
                 <option value="us">USA</option>
                 </select>
             </h2>
+            </form>
+            <button onClick={this.AddItem}>
+                AddItem
+            </button>
           </div>
-          {addButton}
       </div>
     );
   }
 }
-
-
-Item.defaultProps = {
-  imgSource: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRaRLHSecd1nSWMD_1uEj8ooMq2R1CzAYNg58yJrKD2wXQ3-tUsNOM4NU",
-  name: "null",
-  maxPrice: 9999,
-  minPrice: 99,
-  duration: 123,
-  categories: [],
-  description: "Description Here",
-  shippingCost: 123,
-  isAuthenticated: false
-}
-
 
 export default AddItemView;
