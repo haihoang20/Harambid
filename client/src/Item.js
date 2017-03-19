@@ -41,7 +41,7 @@ class Item extends Component {
             buyButton = <button> Buy Now </button>
 
         return (
-            <div className="haiTest">
+            <div>
 
               <div className="miniItemBox" onClick={() => this.setVisable()}>
                 <div className="eyeImage">
