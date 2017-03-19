@@ -3,9 +3,8 @@ import React, { Component } from 'react';
 class AddItemView extends Component {
     constructor(props){
         super(props);
-        // TODO: add member Id
         this.state={
-            memberID: 1,
+            memberID: 0,
             imgSource: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRaRLHSecd1nSWMD_1uEj8ooMq2R1CzAYNg58yJrKD2wXQ3-tUsNOM4NU",
             name: "",
             maxPrice:'',
@@ -20,7 +19,9 @@ class AddItemView extends Component {
     }
 
     componentWillReceiveProps(nextProps){
-        console.log(nextProps.state.id);
+        this.setState({
+            memberID: nextProps.state.id
+        });
     }
 
     AddItem = () => {

@@ -19,6 +19,10 @@ router.post('/addItem', function(req, res) {
     console.log("HELLO");
     console.log(JSON.stringify(req.body, null, 4));
     */
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var startTime = date+' '+time;
 
     var memberId = req.body.memberId;
     var imgUrl = req.body.imgSource;
@@ -31,9 +35,8 @@ router.post('/addItem', function(req, res) {
     var shippingCost = req.body.shippingCost;
     var location = req.body.location;
     var isAuthenticated = req.body.isAuthenticated;
-    var startTime;
     // add item to database
-    db.addNewItem(memberId, name, imgUrl, 0, duration, maxPrice, minPrice,
+    db.addNewItem(memberId, name, imgUrl, startTime, duration, maxPrice, minPrice,
                     description, isAuthenticated, 0, category, location);
 });
 
