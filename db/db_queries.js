@@ -34,6 +34,20 @@ function getAllItems(callback) {
   });
 }
 
+function setItemDuration(id, duration) {
+	var stmt = db.prepare("UPDATE item SET Duration = (?) WHERE Id = (?)");
+ 	stmt.run(duration, id);
+ 	stmt.finalize();
+ 	db.close;
+}
+
+function setItemNumViews(id, views) {
+	var stmt = db.prepare("UPDATE item SET Num_Views = (?) WHERE Id = (?)");
+	stmt.run(views, id);
+	stmt.finalize();
+	db.close;
+}
+
 function setItemAvailibility(id, avail) {
 	var stmt = db.prepare("UPDATE item SET Availibility = (?) WHERE Id = (?)");
 	stmt.run(avail, id);
@@ -41,19 +55,12 @@ function setItemAvailibility(id, avail) {
 	db.close;
 }
 
-function addNewUser(firstName, lastName, email, updatedAt, createdAt, profilePic, fb_Id, num_ratings, rating_avg) {
-	var stmt = db.prepare("INSERT INTO user (FirstName, LastName, Email, UpdatedAt, CreatedAt, ProfilePic, FB_Id, Num_Ratings, Rating_Avg) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-	stmt.run(firstName, lastName, email, updatedAt, createdAt, profilePic, fb_Id, num_ratings, rating_avg);
+function addNewUser(name, email, updatedAt, createdAt, profilePic, fb_Id, num_ratings, rating_avg) {
+	var stmt = db.prepare("INSERT INTO user (Name, Email, CreatedAt, ProfilePic, FB_Id, Num_Ratings, Rating_Avg) VALUES (?, ?, ?, ?, ?, ?, ?)");
+	stmt.run(name, email, createdAt, profilePic, fb_Id, num_ratings, rating_avg);
 	stmt.finalize();
 	console.log("Making User: " + fb_Id);
 	db.close();
-}
-
-function setUserUpdatedAt(id, updatedAt) {
-	var stmt = db.prepare("UPDATE user SET UpdatedAt = (?) WHERE Id = (?)");
-	stmt.run(updatedAt, id);
-	stmt.finalize();
-	db.close;
 }
 
 function getUserId(fb_Id, callback) {
