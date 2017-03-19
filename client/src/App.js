@@ -14,8 +14,9 @@ class App extends Component {
     super(props);
     this.state={
       authenticated:false,
-      name:"null",
-      email:"null",
+      name:null,
+      email:null,
+      picture: null,
       id:0,
       modelOpen:false
     }
@@ -28,7 +29,21 @@ class App extends Component {
       authenticated:true,
       name:response.name,
       email:response.email,
+      picture: response.picture,
       id:response.id
+    });
+
+    addNewMember()
+  }
+
+  addNewMember = (){
+    fetch('/api/member/addMember', {
+      headers: {
+          'Content-Type': 'application/json'
+      },
+    accept: 'application/json',
+    method: "POST",
+    body: JSON.stringify( this.state )
     });
   }
 
