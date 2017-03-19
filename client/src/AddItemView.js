@@ -7,18 +7,72 @@ class AddItemView extends Component {
         this.state={
             name: "",
             maxPrice:"",
-            minPrice:""
-
+            minPrice:"",
+            duration:"",
+            categories:[],
+            description:"",
+            shippingCost:"",
+            location:"",
+            isAuthenticated:"",
         }
     }
 
     AddItem = () => {
-        alert(this.state.name);
+        alert("Name " + this.state.name
+            + "MaxPrice " + this.state.maxPrice
+            + "MinPrice " + this.state.minPrice
+            + "Duration " + this.state.duration
+            + "Categories " + this.state.categories
+            + "Description " + this.state.description
+            + "ShippingCost " + this.state.shippingCost
+            + "Location " + this.state.location);
     }
 
     handleNameChange(e){
         this.setState({
             name: e.target.value
+        });
+    }
+
+    handleMaxPriceChange(e){
+        this.setState({
+            maxPrice: e.target.value
+        });
+    }
+
+    handleMinPriceChange(e){
+        this.setState({
+            minPrice: e.target.value
+        });
+    }
+
+    handleDurationChange(e){
+        this.setState({
+            duration: e.target.value
+        });
+    }
+
+    handleCategoriesChange(e){
+        this.setState({
+            categories: e.target.value
+        });
+    }
+
+    handleDescriptionChange(e){
+        this.setState({
+            description: e.target.value
+        });
+    }
+
+    handleShippingCostChange(e){
+        this.setState({
+            shippingCost: e.target.value
+        });
+    }
+
+    handleLocationChange(e){
+        this.setState({
+            location: e.target.value
         });
     }
 
@@ -35,31 +89,32 @@ class AddItemView extends Component {
             </h2>
             <h2>
             Max price:
-                <input type="text" name="maxPrice" />
+                <input type="text" name="maxPrice" onChange={(e) => this.handleMaxPriceChange(e)}/>
             </h2>
             <h2>
             Min Price:
-                <input type="text" name="minPrice" />
+                <input type="text" name="minPrice" onChange={(e) => this.handleMinPriceChange(e)}/>
             </h2>
             <h2>
             Duration:
-                <input type="text" name="duration" />
+                <input type="text" name="duration" onChange={(e) => this.handleDurationChange(e)}/>
             </h2>
             <h2>
             Categories:
-                <input type="text" name="categories" />
+                <input type="text" name="categories" onChange={(e) => this.handleCategoriesChange(e)} />
             </h2>
             <h2>
             Description:
-                <input type="text" name="description" />
+                <textarea name="body"
+                    onChange={(e) => this.handleDescriptionChange(e)}/>
             </h2>
             <h2>
             Shipping Cost:
-                <input type="text" name="shippingCost" />
+                <input type="text" name="shippingCost" onChange={(e) => this.handleShippingCostChange(e)}/>
             </h2>
             <h2>
             Location:
-                <select>
+                <select onChange={(e) => this.handleLocationChange(e)}>
                 <option value="-"> - </option>
                 <option value="ca">Canada</option>
                 <option value="us">USA</option>
