@@ -39,6 +39,7 @@ class App extends Component {
         callback={(e) => this.pushResults(e)} />
       </div>
       <ItemView state={this.state}/>
+      <AddItemView/>
       </div>
     );
   }

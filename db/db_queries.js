@@ -8,8 +8,8 @@ function addNewItem(memberId, name, pictureURL, startTime, duration, startPrice,
 	db.close;
 }
 
-function getItemsBasedOnCategory(categories, callback) {
-  var query = "SELECT * FROM item WHERE Categories LIKE '%" + categories + "%'";
+function getItemsBasedOnCategory(category, callback) {
+  var query = "SELECT * FROM item WHERE Category LIKE '%" + category + "%'";
   db.all(query, function (err, rows) {
     if(err){
         console.log(err);
