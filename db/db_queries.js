@@ -28,8 +28,8 @@ function getAllItems(callback) {
         console.log(err);
 				db.close();
     }else{
-        callback(rows);
-				db.close();
+		return callback(rows);
+		db.close();
     }
   });
 }

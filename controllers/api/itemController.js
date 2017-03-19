@@ -38,11 +38,10 @@ router.post('/addItem', function(req, res) {
 
 router.get('/allItems', function(req, res) {
   console.log("IMMA BOUT TO GET ALL DA ITEMS");
-  console.log(req);
-  // db.getAllItems()
-  //   .then((data) => {
-  //     res.json(data);
-  //   })
+  db.getAllItems(function(response){
+      console.log(response);
+      res.json(response);
+  });
 });
 
 module.exports = router;
