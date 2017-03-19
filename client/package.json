@@ -10,6 +10,7 @@
     "react-facebook-login": "^3.5.0",
     "react-icons": "^2.2.3",
     "react-infinite-grid": "^0.4.0",
+    "react-list": "^0.8.4",
     "react-modal": "^1.7.3",
     "react-s3-uploader": "^4.0.3",
     "react-star-rating": "^1.4.2"

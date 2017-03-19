@@ -48,8 +48,17 @@
 }
 
 .Listings{
-  width: 200px;
-  height: 200px;
+  width: 999px;
+  height: 800px;
+  float: left;
+  border: 1px solid black;
+  display: block;
+}
+
+.itemContainer{
+  margin: 1px;
+  width: 331px;
+  display: inline-block;
   float: left;
 }
 

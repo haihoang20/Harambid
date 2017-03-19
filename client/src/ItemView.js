@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Item from './Item';
 import Dropdown from 'react-dropdown'
+import ReactList from 'react-list';
 
 class ItemView extends Component {
   constructor(props){
@@ -12,7 +13,7 @@ class ItemView extends Component {
       email:props.state.email,
       id:props.state.id,
       buttonMessage:"Please Login to Purchase",
-      items: [1,2,3]
+      items: []
     }
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
   }
@@ -35,10 +36,10 @@ class ItemView extends Component {
       fetch('/api/item/allAvailableItems', {
             accept: 'application/json',
         }).then((response) => {
-                response.json().then(function(data) {
-                    //console.log(data);
-                    //alert(JSON.stringify(data));
-            });
+          response.json()
+          .then(function(data) {
+            this.setState({items: data});
+          }.bind(this));
     });
   }
 
@@ -50,7 +51,13 @@ class ItemView extends Component {
     });
   }
 
+  // renderItem(index, key) {
+  //   return <div key={key}><Item state={this.state}/></div>;
+  // }
+
   render() {
+    console.log("ABOUT TO RENDER ALL THE ITEMS INTO THE CONSOLE OR SOMETHING");
+    console.log(this.state.items);
     const Categories = ['one', 'two', 'three'];
     const Locations = ['First', 'Second', 'Third'];
     const defaultOption = Categories[0];
@@ -89,11 +96,16 @@ class ItemView extends Component {
         </div>
 
         <div className = "Listings">
-            {this.renderItems(this.state.items)}
+        {this.renderItems(this.state.items)}
         </div>
       </div>
     );
   }
 }
+// <ReactList
+//   itemRenderer={() => this.renderItem()}
+//   length={this.state.items.length}
+//   type='uniform'
+// />
 
 export default ItemView;
