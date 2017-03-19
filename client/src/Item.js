@@ -17,8 +17,13 @@ class Item extends Component {
     super(props);
     this.state={
       visible: false,
-
-    }}
+      authenticated:props.state.authenticated,
+      name:props.state.name,
+      email:props.state.email,
+      id:props.state.id,
+      buttonMessage:"Please Login to Purchase"
+    }
+  }
 
     setVisable(){
         if(this.state.visible == false)
@@ -30,7 +35,7 @@ class Item extends Component {
     render() {
         let buyButton = null
 
-        if(this.props.isAuthenticated == false)
+        if(this.props.authenticated == false)
             buyButton = <button> Please Login to Purchase</button>
         else
             buyButton = <button> Buy Now </button>
