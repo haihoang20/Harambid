@@ -14,7 +14,6 @@ class Item extends Component {
   }
 
   setVisable(){
-    console.log(this.state.waffles);
     if(this.state.visible == false)
       this.setState({visible: true});
     else
