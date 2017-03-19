@@ -15,6 +15,7 @@ router.post('/addItem', function(req, res){
     var description;
     var shippingCost;
     var isAuthenticated;
+    console.log("HELLO");
     // add item to database
 }
 
