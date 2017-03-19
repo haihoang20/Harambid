@@ -3,6 +3,7 @@ var file = "Harambid.db";
 var exists = fs.existsSync(file);
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('Harambid.db');
+var sql = require("db_queries.js");
 
 
 db.serialize(function() {
@@ -14,7 +15,7 @@ db.serialize(function() {
 
 	console.log("Creating tables...")
 	db.run("CREATE TABLE if not exists user (Id INTEGER PRIMARY KEY AUTOINCREMENT, FirstName TEXT, LastName TEXT, Email TEXT, UpdatedAt DATETIME, CreatedAt DATETIME, ProfilePic TEXT, FB_Id TEXT, Num_Ratings INT, Rating_Avg FLOAT)");
-	db.run("CREATE TABLE IF NOT EXISTS item (Id INTEGER PRIMARY KEY AUTOINCREMENT, MemberId INT, Name TEXT, Pictures TEXT, StartTime DATETIME, Duration INT, StartPrice FLOAT, MinPrice FLOAT, Description TEXT, Categories BLOB, Availibility INT,	Num_Views INT)");
+	db.run("CREATE TABLE IF NOT EXISTS item (Id INTEGER PRIMARY KEY AUTOINCREMENT, MemberId INT, Name TEXT, Pictures TEXT, StartTime DATETIME, Duration INT, StartPrice FLOAT, MinPrice FLOAT, Description TEXT, Categories TEXT, Availibility INT,	Num_Views INT)");
 
 
 	var stmt = db.prepare("INSERT INTO user (FirstName) VALUES (?)");
@@ -24,10 +25,14 @@ db.serialize(function() {
   }
 
 	var stmt2 = db.prepare("INSERT INTO item (MemberId, Name, Pictures, StartTime, Duration, StartPrice, MinPrice, Description, Categories, Availibility, Num_Views) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-	stmt2.run(12, "FAKEITEM", "pictureURL", 1, 23, 12.5, 2.3,"desc", ["a", "b", "c"], 1, 3);
-
+	for (var i = 1; i < 11; i++) {
+		stmt2.run(i, "FAKEITEM", "pictureURL", 1, 23, 12.5, 2.3,"desc", "a", 1, 3);
+		console.log("Creating item" + i);
+	}
 	var stmt3 = db.prepare("UPDATE item SET Availibility = (?) WHERE Id =  (? )" );
 	stmt3.run(0, 1);
+
+	sql.getItemsBasedOnCategoryTest("a", console.log);
 
 	stmt.finalize();
   stmt2.finalize();

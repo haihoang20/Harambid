@@ -4,7 +4,7 @@ const sqlite = require('sqlite3');
 
 //const filebuffer = fs.existsSync('Harambid.db');
 
-const db = new sqlite.Database('./Harambidtemps.db');
+const db = new sqlite.Database('./Harambid.db');
 
 const app = express();
 

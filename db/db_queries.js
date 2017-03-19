@@ -8,8 +8,15 @@ function addNewItem(memberId, name, pictureURL, startTime, duration, minPrice, d
 	db.close;
 }
 
-function getItemsBasedOnCategory(categories) {
-	//TODO
+function getItemsBasedOnCategory(categories, callback) {
+  var query = "SELECT * FROM table WHERE Categories LIKE %" + categories + "%";
+  db.all(query, function (err, rows) {
+    if(err){
+        console.log(err);
+    }else{
+        callback(rows);
+    }
+  });
 }
 
 function setItemAvailibility(id, avail) {
