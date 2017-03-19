@@ -10,7 +10,7 @@ router.use(bodyParser.urlencoded({
 router.use(bodyParser.json());
 
 router.post('/addMember', function(req, res) {
-    console.log(req.body);
+    // console.log(req.body);
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
