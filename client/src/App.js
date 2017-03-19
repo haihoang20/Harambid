@@ -22,6 +22,7 @@ class App extends Component {
         callback={responseFacebook} />
       </div>
       <ItemView/>
+      <AddItemView/>
       </div>
     );
   }

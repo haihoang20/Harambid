@@ -15,21 +15,25 @@ router.get('/filterItem', function(req, res){
 */
 
 router.post('/addItem', function(req, res) {
+    /*
     console.log("HELLO");
     console.log(JSON.stringify(req.body, null, 4));
+    */
 
     var memberId = req.body.memberId;
-    var imgSource = req.body.imgSource;
+    var imgUrl = req.body.imgSource;
     var name = req.body.name;
     var maxPrice = req.body.maxPrice;
     var minPrice = req.body.minPrice;;
     var duration = req.body.duration;
-    var categories = req.body.categories;
-    var description = req.body.duration;;
-    var shippingCost = req.body.shippingCost;;
-    var isAuthenticated = req.body.isAuthenticated;;
-    //sql.addNewItems
+    var category = req.body.categories;
+    var description = req.body.duration;
+    var shippingCost = req.body.shippingCost;
+    var isAuthenticated = req.body.isAuthenticated;
+    var startTime;
     // add item to database
+    db.addNewItem(memberId, name, imgUrl, 0, duration, maxPrice, minPrice,
+                    description, isAuthenticated, 0, category);
 });
 
 router.get('/allItems', function(req, res) {
