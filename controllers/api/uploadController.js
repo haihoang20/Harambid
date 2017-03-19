@@ -7,9 +7,10 @@ router.use(bodyParser.urlencoded({
 }));
 router.use(bodyParser.json());
 
-router.post('/s3', require('react-s3-uploader/s3router') ({
+router.use('/s3', require('react-s3-uploader/s3router') ({
   bucket: 'harambid',
-  region: 'us-west-2'
+  region: 'us-west-2',
+	headers: {'Access-Control-Allow-Origin': '*'}
 }));
 
 

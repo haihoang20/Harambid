@@ -144,7 +144,7 @@ class AddItemView extends Component {
           <div className="Add your item">
           <form onSubmit={() => this.AddItem()}>
           <ReactS3Uploader
-            signingUrl="/api/upload/s3/sign"
+            signingUrl="api/upload/s3/sign"
             accept="image/*"
             uploadRequestHeaders={{ 'x-amz-acl': 'public-read' }}
             onProgress={this.onUploadProgress}

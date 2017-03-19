@@ -17,9 +17,14 @@ var controllers = require('./controllers');
 app.use(controllers);
 /*--setup controllers--*/
 
-process.env.AWS_ACCESS_KEY_ID = "AKIAINRQW4RD4HX37QUQ";
-process.env.AWS_SECRET_ACCESS_KEY = "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";
-
+process.env.AWS_ACCESS_KEY_ID = null;
+process.env.AWS_SECRET_ACCESS_KEY = null;
+/*
+app.use('/s3', require('react-s3-uploader/s3router')({
+	bucket: 'harambid',
+  region: 'us-west-2'
+}));
+*/
 const COLUMNS = [
   'carbohydrate_g',
   'protein_g',
