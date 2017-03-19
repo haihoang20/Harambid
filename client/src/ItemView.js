@@ -3,6 +3,26 @@ import Item from './Item';
 import Dropdown from 'react-dropdown'
 
 class ItemView extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      authenticated:false,
+      name:"null",
+      email:"null",
+      id:0
+    }
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      authenticated:nextProps.state.authenticated,
+      name:nextProps.state.name,
+      email:nextProps.state.email,
+      id:nextProps.state.id
+    });
+    console.log(nextProps.state.id);
+  }
+
   render() {
     const Categories = [
           'one', 'two', 'three'

@@ -6,10 +6,8 @@ class Item extends Component {
 
   constructor(props) {
     super(props);
-    console.log(this.props.waffles);
     this.state={
       visible: false,
-      waffles: this.props.waffles
     }
   }
 
