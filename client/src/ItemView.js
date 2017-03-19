@@ -44,7 +44,8 @@ class ItemView extends Component {
   }
 
   renderItems(items) {
-    return items.map(() => {
+    return items.map((itemData) => {
+      // pass item data into Item to use
       return (
         <Item state={this.state}/>
       );
@@ -56,8 +57,6 @@ class ItemView extends Component {
   // }
 
   render() {
-    console.log("ABOUT TO RENDER ALL THE ITEMS INTO THE CONSOLE OR SOMETHING");
-    console.log(this.state.items);
     const Categories = ['one', 'two', 'three'];
     const Locations = ['First', 'Second', 'Third'];
     const defaultOption = Categories[0];
@@ -96,7 +95,7 @@ class ItemView extends Component {
         </div>
 
         <div className = "Listings">
-        {this.renderItems(this.state.items)}
+          {this.renderItems(this.state.items)}
         </div>
       </div>
     );
