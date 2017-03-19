@@ -42,11 +42,16 @@ function setItemAvailibility(id, avail) {
 }
 
 function addNewUser(firstName, lastName, email, updatedAt, createdAt, profilePic, fb_Id, num_ratings, rating_avg) {
-	//TODO
+	var stmt = db.prepare("INSERT INTO user (FirstName, LastName, Email, UpdatedAt, CreatedAt, ProfilePic, FB_Id, Num_Ratings, Rating_Avg) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+	stmt.run(firstName, lastName, email, updatedAt, createdAt, profilePic, fb_Id, num_ratings, rating_avg);
+	stmt.finalize();
+	console.log("Making User: " + fb_Id);
+	db.close();
 }
 
 module.exports = {
 	addNewItem : addNewItem,
 	getItemsBasedOnCategory : getItemsBasedOnCategory,
 	setItemAvailibility : setItemAvailibility,
-	getAllItems : getAllItems};
+	getAllItems : getAllItems,
+	addNewUser : addNewUser};
