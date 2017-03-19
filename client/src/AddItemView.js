@@ -1,31 +1,69 @@
 import React, { Component } from 'react';
-import Item from './Item';
 
 class AddItemView extends Component {
     constructor(props){
         super(props);
+        // TODO: add member Id
         this.state={
+            memberID: 1,
+            imgSource: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRaRLHSecd1nSWMD_1uEj8ooMq2R1CzAYNg58yJrKD2wXQ3-tUsNOM4NU",
             name: "",
-            maxPrice:"",
-            minPrice:"",
-            duration:"",
+            maxPrice:'',
+            minPrice:'',
+            duration:'',
             categories:[],
             description:"",
-            shippingCost:"",
+            shippingCost:'',
             location:"",
             isAuthenticated:"",
         }
     }
 
     AddItem = () => {
-        alert("Name " + this.state.name
-            + "MaxPrice " + this.state.maxPrice
-            + "MinPrice " + this.state.minPrice
-            + "Duration " + this.state.duration
-            + "Categories " + this.state.categories
-            + "Description " + this.state.description
-            + "ShippingCost " + this.state.shippingCost
-            + "Location " + this.state.location);
+        fetch(`api/food?q=hash+browns`, {
+   accept: 'application/json',
+ })
+        /*
+        if (this.state.name === '' ||
+            this.state.maxPrice === '' ||
+            this.state.minPrice === '' ||
+            this.state.duration === '' ||
+            this.state.location === ''){
+            alert("Fields must be occupied");
+        }
+        else if (isNaN(this.state.duration)
+                || isNaN(this.state.minPrice)
+                || isNaN(this.state.maxPrice)
+                || isNaN(this.state.shippingCost)){
+            alert("Max Price, Min Price, Duration and Shipping Cost must be number")
+        }
+        else if (this.state.minPrice <= 0 || this.state.maxPrice <= 0 ||
+                this.state.duration <= 0 || this.state.shippingCost <= 0){
+            alert("Max Price, Min Price, Duration and Shipping Cost must be more than 0")
+        }
+
+        else if(this.state.minPrice >= this.state.maxPrice){
+            alert("Min price must be lower than max price");
+        }
+        else {
+            /*
+            alert("Name " + this.state.name
+                + "MaxPrice " + this.state.maxPrice
+                + "MinPrice " + this.state.minPrice
+                + "Duration " + this.state.duration
+                + "Categories " + this.state.categories
+                + "Description " + this.state.description
+                + "ShippingCost " + this.state.shippingCost
+                + "Location " + this.state.location);
+
+            this.state.isAuthenticated = true;
+            // TODO: get the member id
+            fetch('/api/item/addItem', {
+              method: "post",
+              body: this.state
+            });
+        }
+                        */
     }
 
     handleNameChange(e){
