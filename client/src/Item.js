@@ -22,7 +22,7 @@ class Item extends Component {
     let buyButton = null
 
     if(this.props.isAuthenticated == false)
-        buyButton = <button> Please Login </button>
+        buyButton = <button> Please Login to Purchase</button>
     else
         buyButton = <button> Buy Now </button>
 
@@ -30,7 +30,7 @@ class Item extends Component {
       <div>
 
       <div className="miniItemBox" onClick={() => this.setVisable()}>
-      
+
       <div className="miniImage">
         <img src={this.props.imgSource} />
       </div>
@@ -45,6 +45,7 @@ class Item extends Component {
             <h2>
             {this.props.duration}
             </h2>
+            {buyButton}
       </div>
 
 
