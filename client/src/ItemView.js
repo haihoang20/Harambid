@@ -6,7 +6,6 @@ import ReactList from 'react-list';
 class ItemView extends Component {
   constructor(props){
     super(props);
-    // console.log(props.state);
     this.state={
       authenticated:props.state.authenticated,
       name:props.state.name,
@@ -16,6 +15,7 @@ class ItemView extends Component {
       items: []
     }
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
+    this.renderItems = this.renderItems.bind(this);
   }
 
   componentDidMount() {
@@ -45,9 +45,32 @@ class ItemView extends Component {
 
   renderItems(items) {
     return items.map((itemData) => {
+      // Calculating current price assuming everything in milliseconds
+      var date = new Date();
+      var CurrentTime = date.getTime();
+      var CurrentPrice = ((CurrentTime - itemData.StartTime)/itemData.Duration)*itemData.StartPrice;
+    
+
       // pass item data into Item to use
+      // TODO: Add Views Table, Change all times to MilliSeconds
+      var itemState = {
+        authenticated: this.state.authenticated,
+        Id: itemData.Id,
+        StartPrice: itemData.StartPrice,
+        Name: itemData.Name,
+        Duration: itemData.Duration,
+        Description: itemData.Description,
+        Location: itemData.Location,
+        Views: itemData.Num_Views,
+        MinPrice:itemData.MinPrice,
+        StartTime: itemData.StartTime,
+        Pictures: itemData.Pictures,
+        Availibility: itemData.Availibility,
+        CurrentPrice: CurrentPrice
+      }
+      console.log(itemState);
       return (
-        <Item state={this.state}/>
+        <Item state={itemState} key={itemState.Id}/>
       );
     });
   }

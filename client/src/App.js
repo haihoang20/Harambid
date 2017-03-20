@@ -61,7 +61,6 @@ class App extends Component {
       this.setState({modelOpen:true});
     else
       this.setState({modelOpen:false});
-
   }
 
   render() {

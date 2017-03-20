@@ -48,8 +48,8 @@
 }
 
 .Listings{
-  width: 999px;
-  height: 800px;
+  width: 900px;
+  height: 900px;
   float: left;
   border: 1px solid black;
   display: block;
@@ -57,7 +57,7 @@
 
 .itemContainer{
   margin: 1px;
-  width: 331px;
+  width: 298px;
   display: inline-block;
   float: left;
 }
